@@ -135,7 +135,7 @@ module JasperCommandLine
 
           puts file_contents
         ensure
-          created_files.each { |file| File.unlink file if File.exists?(file) }
+          created_files.each { |file| File.unlink file if File.exist?(file) }
         end
 
       # rescue Exception => e

@@ -50,12 +50,12 @@ module JasperCommandLine
         opts.separator "Options:"
 
         opts.on('-j', '--jasper file', "The .jasper file to load (if one doesn't exist, it is compiled from the .jrxml file with the same name and on the same location)") do |file|
-          raise ArgumentError.new("File not found: #{file}") unless File.exists?(file) || File.exists?(file.gsub(/\.jasper$/, '.jrxml'))
+          raise ArgumentError.new("File not found: #{file}") unless File.exist?(file) || File.exist?(file.gsub(/\.jasper$/, '.jrxml'))
           data[:jasper_file] = file
         end
 
         opts.on('-d', '--data-file file', "The .xml file to load the data from") do |file|
-          raise ArgumentError.new("Data file not found: #{file}") unless File.exists?(file)
+          raise ArgumentError.new("Data file not found: #{file}") unless File.exist?(file)
           data[:data] = File.read file
         end
 
@@ -92,7 +92,7 @@ module JasperCommandLine
 
         opts.on('--sign-key-file file', "The location of the PKCS12 file to digitally sign the PDF with") do |file|
           # Sign document with file
-          raise ArgumentError.new("Signature key file not found: #{file}") unless File.exists?(file)
+          raise ArgumentError.new("Signature key file not found: #{file}") unless File.exist?(file)
           data[:signature] ||= {}
           data[:signature][:key_file] = file
         end
